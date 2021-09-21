@@ -262,3 +262,41 @@ function SWEP:OnRemove()
       RunConsoleCommand("use", "weapon_ttt_unarmed")
    end
 end
+
+--This makes it actually appear in the player's hand on the player's screen.
+if CLIENT then
+   function SWEP:DrawWorldModel()
+       if not self.WorldModelEnt then
+           self.WorldModelEnt = ClientsideModel(self.WorldModel)
+           self.WorldModelEnt:SetSkin(1)
+           self.WorldModelEnt:SetNoDraw(true)
+       end
+
+       local owner = self:GetOwner()
+       if IsValid(owner) then
+           local boneid = owner:LookupBone(self.CustomAttatchment)
+           if boneid <= 0 then return end
+
+           local matrix = owner:GetBoneMatrix(boneid)
+           if not matrix then return end
+
+           local newPos, newAng = LocalToWorld(self.CustomWorldVector, self.CustomWorldAngle, matrix:GetTranslation(), matrix:GetAngles())
+
+           self.WorldModelEnt:SetPos(newPos)
+           self.WorldModelEnt:SetAngles(newAng)
+
+           self.WorldModelEnt:SetupBones()
+       else
+           self.WorldModelEnt:SetPos(self:GetPos())
+           self.WorldModelEnt:SetAngles(self:GetAngles())
+       end
+
+       self.WorldModelEnt:DrawModel()
+   end
+
+   function SWEP:CalcViewModelView(vm, oldEyePos, oldEyeAng, eyePos, eyeAng)
+       local newPos, _ = LocalToWorld(self.CustomViewVector, self.CustomWorldAngle, eyePos, eyeAng)
+       return newPos, eyeAng
+   end
+end
+
