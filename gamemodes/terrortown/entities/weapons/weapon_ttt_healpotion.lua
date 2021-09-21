@@ -1,4 +1,5 @@
---Almost entirely code from the base grenade code in TTT. A lot of this is probably unneeded
+--Almost entirely code from the base grenade code in TTT. A lot of this is probably unneeded.
+--Once things are all working solidly, possibly determine if anything can hbe cut.
 
 AddCSLuaFile()
 
