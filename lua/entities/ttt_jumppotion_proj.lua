@@ -20,22 +20,17 @@ function ENT:Initialize()
    end
 end
 
-local function HealRadius(pos, thrower, ply)
+local function JumpRadius(pos, thrower, ply)
 	local radius	= 250
 	local duration	= 20
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
-		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) and target:Health() < target:GetMaxHealth() then
-			local need = math.min(target:GetMaxHealth() - target:Health())
-			target:SetHealth(math.min(target:GetMaxHealth(), target:Health() + need))
+		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
+			timer.Simple( 15, function() target:SetJumpHeight(500) end )
 		end
 	end
 end
 
-local function Heal(ply)
-	local need = math.min(ply:GetMaxHealth() - ply:Health(), self.HealAmount, self:Clip1())
-	ply:SetHealth(math.min(ply:GetMaxHealth(), ply:Health() + need))
-end
 
 local splashsound = Sound("physics/glass/glass_bottle_break2.wav")
 function ENT:Explode(tr)
@@ -47,7 +42,7 @@ function ENT:Explode(tr)
 		end
 
 		local pos = self:GetPos()
-		HealRadius(pos, self:GetThrower())
+		JumpRadius(pos, self:GetThrower())
 		self:Remove()
 		sound.Play(splashsound, pos, 100, 100)
 	else

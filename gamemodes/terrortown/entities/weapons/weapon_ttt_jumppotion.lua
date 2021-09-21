@@ -7,8 +7,8 @@ SWEP.HoldReady             = "grenade"
 SWEP.HoldNormal            = "slam"
 
 if CLIENT then
-   SWEP.PrintName          = "Health Potion"
-   SWEP.Instructions       = "Throw to heal"
+   SWEP.PrintName          = "Jump Potion"
+   SWEP.Instructions       = "Throw to jumpy"
    SWEP.Slot               = 8
 
    SWEP.ViewModelFlip      = true
@@ -177,7 +177,7 @@ end
 
 -- subclasses must override with their own grenade ent
 function SWEP:GetGrenadeName()
-   return "ttt_healpotion_proj"
+   return "ttt_jumppotion_proj"
 end
 
 

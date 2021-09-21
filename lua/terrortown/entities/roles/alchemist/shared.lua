@@ -11,7 +11,7 @@ if SERVER then
 end
 
 function ROLE:PreInitialize()
-	self.color = Color(192, 229, 1, 255)
+	self.color = Color(1, 229, 134, 161)
 	self.abbr = "alch"
 
 	self.unknownTeam = true
@@ -31,20 +31,13 @@ function ROLE:PreInitialize()
 end
 
 function ROLE:Initialize()
-	roles.SetBaseRole(self, ROLE_DETECTIVE)
+	roles.SetBaseRole(self, ROLE_INNOCENT)
 end
 
 if SERVER then
-	-- Displays the role for all to see.
-	hook.Add("TTT2ModifyRadarRole", "AlchemistModifyRadarRole", function(ply, target)
-		if ply:GetSubRole() ~= ROLE_ALCHEMISt and target:GetSubRole() == ROLE_ALCHEMIST then
-			return ROLE_ALCHEMIST, TEAM_INNOCENT
-		end
-	end)
-	
 	--This sets up the timer needed to supply a potion after a certain time
 	local function GiveMeAPotion(ply)
-		timer.Create( "MakePotion", 30, 5,  function() ply:GiveEquipmentWeapon("weapon_ttt_healpotion") end)
+		timer.Create( "MakePotion", 25, 5,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
 	end
 	hook.Add( "Initialize", "Timer Example", "MakePotion" )
 
@@ -55,5 +48,5 @@ if SERVER then
 end
 
 
---This will eventually be a table for the random potion selection to use.
-potions = { "weapon_ttt_healpotion" }
+--This is a table for the random potion selection to use.
+potions = { "weapon_ttt_healpotion", "weapon_ttt_speedpotion", "weapon_ttt_armorpotion", "weapon_ttt_jumppotion"}
