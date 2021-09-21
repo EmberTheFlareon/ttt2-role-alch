@@ -5,7 +5,7 @@
 
 
 if SERVER then
-	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_alch.vtf")
+	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_alch.vmt")
 	AddCSLuaFile()
 
 end
