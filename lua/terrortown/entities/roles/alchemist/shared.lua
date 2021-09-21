@@ -1,5 +1,5 @@
 
---Another shout out to the team behind TTT2 for making this idea actually doable in the first place.
+-- Shout out to the team behind TTT2 for making this idea actually doable in the first place.
 -- Thank you to everyone at GFL Clan that helps run the Anarchy servers for countless hours of fun.
 -- Finally, thank you to eveyone on the Neoxult Discord for being so helphful and patient!
 
