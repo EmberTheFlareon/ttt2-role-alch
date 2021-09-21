@@ -45,11 +45,8 @@ function ENT:Explode(tr)
 		end
 
 		local pos = self:GetPos()
-		
 		HealRadius(pos, self:GetThrower())
-
 		self:Remove()
-
 		sound.Play(splashsound, pos, 100, 100)
 	else
 		self:SetDetonateExact(0)
