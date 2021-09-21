@@ -39,19 +39,9 @@ function ROLE:Initialize()
 end
 
 if SERVER then
-
-	--This section and the one after ensure the Alchemist appears as Alchemist correctly
-	--It also helps me quickly modify things to use for the accompanying role, Witch
-	--How does the Alchemist appear to other Innocents?
-	hook.Add("TTT2ModifyRadarRole", "TTT2ModifyRadarRoleAlchemist", function(ply, target)
-		if ply:HasTeam(TEAM_INNOCENT) and target:GetSubRole() == ROLE_ALCHEMIST then
-			return ROLE_ALCHEMIST, TEAM_INNOCENT
-		end
-	end)
-
-	--How does the Alchemist appear to Tratiors?
-	hook.Add("TTT2ModifyRadarRole", "TTT2ModifyRadarRoleAlchemist", function(ply, target)
-		if ply:HasTeam(TEAM_Traitor) and target:GetSubRole() == ROLE_ALCHEMIST then
+	-- Displays the role for all to see.
+	hook.Add("TTT2ModifyRadarRole", "AlchemistModifyRadarRole", function(ply, target)
+		if ply:GetSubRole() ~= ROLE_ALCHEMISt and target:GetSubRole() == ROLE_ALCHEMIST then
 			return ROLE_ALCHEMIST, TEAM_INNOCENT
 		end
 	end)
