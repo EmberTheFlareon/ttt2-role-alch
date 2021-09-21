@@ -1,4 +1,4 @@
--- common code for all types of grenade
+--Almost entirely code from the base grenade code in TTT. A lot of this is probably unneeded
 
 AddCSLuaFile()
 
