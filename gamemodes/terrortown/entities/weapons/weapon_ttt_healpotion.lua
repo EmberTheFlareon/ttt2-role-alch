@@ -17,7 +17,7 @@ if CLIENT then
    SWEP.Icon               = "vgui/ttt/icon_nades"
 end
 
-SWEP.Base                  = "weapon_tttgrenadebase"
+SWEP.Base                  = "weapon_tttbasegrenade"
 
 SWEP.ViewModel             = Model("models/sohald_spike/props/potion_1.mdl")
 SWEP.WorldModel            = Model("models/sohald_spike/props/potion_1.mdl")
