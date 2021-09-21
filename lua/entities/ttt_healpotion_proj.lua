@@ -37,7 +37,7 @@ local function Heal(ply)
 	ply:SetHealth(math.min(ply:GetMaxHealth(), ply:Health() + need))
 end
 
-local splashsound = Sound("sound/potionbreak/glass1.wav")
+local splashsound = Sound("physics/glass/glass_bottle_break2.wav")
 function ENT:Explode(tr)
 	if SERVER then
 		self:SetNoDraw(true)
