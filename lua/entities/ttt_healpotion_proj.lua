@@ -25,11 +25,13 @@ local function HealRadius(pos, thrower, ply)
 	local duration	= 20
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
-		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
-			Heal(ply)
+		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) and target:Health() < target:GetMaxHealth() then
+			local need = math.min(target:GetMaxHealth() - target:Health())
+			target:SetHealth(math.min(target:GetMaxHealth(), target:Health() + need))
 		end
 	end
 end
+
 local function Heal(ply)
 	local need = math.min(ply:GetMaxHealth() - ply:Health(), self.HealAmount, self:Clip1())
 	ply:SetHealth(math.min(ply:GetMaxHealth(), ply:Health() + need))
