@@ -1,7 +1,4 @@
 
---BIG NOTE: A huge shoutout to blackmagicfine and Smuggles for Imposter. 
---I learned how to do the cycle-able menu and cooldown timers by reading their code. Without it, this'd look terrible.
-
 --Another shout out to the team behind TTT2 for making this idea actually doable in the first place.
 -- Thank you to everyone at GFL Clan that helps run the Anarchy servers for countless hours of fun.
 -- Finally, thank you to eveyone on the Neoxult Discord for being so helphful and patient!
