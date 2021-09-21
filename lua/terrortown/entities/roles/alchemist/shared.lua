@@ -56,22 +56,28 @@ if SERVER then
 		end
 	end)
 	
+	--This activates when the timer set up below it finishes.
+	--When that happens, it gfives the user a potion.
+	-- Currently, as only one potion has been coded, the random selection code is not present.
 	local function GiveMeAPotion(ply)
 		ply:GiveEquipmentWeapon("weapon_ttt_healpotion")
 	end
-
+	
+	--This tells the game that after a certain amount of time has passed, it should give the player a potion.
 	local function CreatePotionTimer(ply)	
 		--Create a timer that is unique to the player.
 		timer.Create("AlchemistBrewTimer" .. ply:SteamID64(), 20, 3, function()
 			GiveMeAPotion(ply)
 		end)
 	end
-
+	
+	--Testing purposes only! This is only here to quickly give a potion so that it may be tested.
 	function ROLE:GiveRoleLoadout(ply, isRoleChange)
 		GiveMeAPotion(ply)
 	end
 end
 
+--This will eventually be a table for the random potion selection to use.
 potions = { "weapon_ttt_healpotion" }
 
 if CLIENT then
