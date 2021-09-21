@@ -19,13 +19,12 @@ function ROLE:PreInitialize()
 	self.score.killsMultiplier = 2
 	self.score.teamKillsMultiplier = -8
 	self.defaultTeam = TEAM_INNOCENT
-	self.defaultEquipment = SPECIAL_EQUIPMENT
+	self.defaultEquipment = INNO_EQUIPMENT
 
 	self.conVarData = {
 		pct = 0.15,  --necessary: percentage of getting this role selected (per player)
 		maximum = 1,  --maximum amount of roles in a round
 		minPlayers = 6, --minimum amount of players until this role is able to get selected
-		credits = 1, --How many credits they spawn with.
 		togglable = true, --Makes it so players can toggle getting this role from their own F1 menu.
 	}
 end
