@@ -22,11 +22,10 @@ end
 
 local function ArmorRadius(pos, thrower, ply)
 	local radius	= 250
-	local duration	= 20
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
-			target:GiveArmor(15)
+			target:GiveArmor(GetConVar("ttt2_alch_armor_potion_amnt"):GetInt())
 		end
 	end
 end

@@ -22,16 +22,17 @@ end
 
 local function JumpRadius(pos, thrower, ply)
 	local radius	= 250
-	local duration	= 20
+	local duration	= GetConVar("ttt2_alch_jump_potion_time"):GetInt()
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
-			timer.Simple( 15, function() target:SetJumpHeight(500) end )
+			target:SetJumpPower(GetConVar("ttt2_alch_jump_potion_jump"):GetInt())
+			timer.Create("Jumpies", duration, 1, function() target:SetJumpPower(200) print("test") end)
 		end
 	end
 end
 
-
+local splashsound = Sound("physics/glass/glass_bottle_break2.wav")
 function ENT:Explode(tr)
 	if SERVER then
 		self:SetNoDraw(true)

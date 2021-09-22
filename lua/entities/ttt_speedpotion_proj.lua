@@ -22,13 +22,15 @@ end
 
 local function SpeedRadius(pos, thrower, ply)
 	local radius	= 250
-	local duration	= 20
+	local duration	= GetConVar("ttt2_alch_speed_potion_time"):GetInt()
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
-			timer.Simple( 15, function() target:SetRunSpeed(13000) end )
+			target:SetWalkSpeed(GetConVar("ttt2_alch_speed_potion_speed"):GetInt())
+			timer.Create("Zoomies", duration, 1, function() target:SetWalkSpeed(200) end)
 		end
 	end
+
 end
 
 local splashsound = Sound("physics/glass/glass_bottle_break2.wav")
