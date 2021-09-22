@@ -39,7 +39,7 @@ if SERVER then
 
 	--This sets up the timer needed to supply a potion after a certain time
 	local function GiveMeAPotion(ply)
-		timer.Create( "MakePotion", 25, 5,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
+		timer.Create( "MakePotion", 35, 5,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
 	end
 	hook.Add( "Initialize", "Timer Example", "MakePotion" )
 
@@ -55,7 +55,7 @@ end
 if CLIENT then
 
 	net.Receive("FakeTimer", function()
-			timer.Create( "Name", 25, 5, function() end )
+			timer.Create( "Name", 35, 5, function() end )
 	end)
 	hook.Add( "Initialize", "Timer Example", CreateFakeTimer )
 end
