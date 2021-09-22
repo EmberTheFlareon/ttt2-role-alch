@@ -10,7 +10,7 @@ This rolecurrently has 4 different potions. Every 25 seconds, a random one is ch
 
 The potions function as grenades, meaning you must throw them to use them.
 
-The potios are: Healing Potion, Armor Potion, Speed Potion, and Jump Potion. The speed and jump ones grant temporary boosts, the healing one heals, and the armor potion grants 15 points of body armor
+The potions are: Healing Potion, Armor Potion, Speed Potion, and Jump Potion. The speed and jump ones grant temporary boosts, the healing one heals, and the armor potion grants 15 points of body armor
 
 
 
