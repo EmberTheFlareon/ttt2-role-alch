@@ -55,7 +55,7 @@ end
 if CLIENT then
 
 	net.Receive("FakeTimer", function()
-			timer.Create( "Name", 25, 5, function() print("I'm Learnding!") end )
+			timer.Create( "Name", 25, 5, function() end )
 	end)
 	hook.Add( "Initialize", "Timer Example", CreateFakeTimer )
 end
