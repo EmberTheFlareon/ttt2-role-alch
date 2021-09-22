@@ -77,7 +77,7 @@ if CLIENT then -- CLIENT
 			draw.FilteredShadowedTexture(x + 8 * self.scale, y + 5 * self.scale, 30 * self.scale, 30 * self.scale, self.alch_icon, color.a, color, self.scale)
 		end
 
-		local amnt_print = timer.TimeLeft("Name")
+		local amnt_print = math.Round(timer.TimeLeft("Name"))
 		draw.AdvancedText(amnt_print, "PureSkinBar", x + 46 * self.scale, y + 9 * self.scale, color, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, true, self.scale)
 
 		-- draw border and shadow

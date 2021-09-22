@@ -4,7 +4,7 @@ end
 
 ENT.Type = "anim"
 ENT.Base = "ttt_basegrenade_proj"
-ENT.Model = Model("models/sohald_spike/props/potion_1.mdl")
+ENT.Model = Model("models/sohald_spike/props/potion_4.mdl")
 
 function ENT:Initialize()
 
@@ -31,7 +31,7 @@ local function SpeedRadius(pos, thrower, ply)
 	end
 end
 
-
+local splashsound = Sound("physics/glass/glass_bottle_break2.wav")
 function ENT:Explode(tr)
 	if SERVER then
 		self:SetNoDraw(true)
