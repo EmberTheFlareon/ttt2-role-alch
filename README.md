@@ -4,19 +4,11 @@ They are an Innocent role that 'brews' potions over time that give benefits when
 
 
 CURRENT PROGRESS:
-Alchemist appears ingame, albeit without a proper icon. They do correctly have an identifying ring on them like the Detective does, though!
-
-Timer doesn't seem to be working right.
-
-Healing Potion is almost finished! Need to tell it to play sound, but otherwise it is functional.
+Alchemist is functional, however not perfect. It could use a HUD element to display the timer that gives potions. 
 
 
-NEXT STEP:
-Get the timer to give another potion working correctly.
+It currently has 4 different potions. Every 25 seconds, a random one is chosen and given to the player. This occurs 5 times during the round.
 
-FUTURE PLANS:
-Once Alchemist is soundly working, add a Traitor role variant called the Witch.
-Have them appear as an Alchemist to everyone but fellow Traitors, adding a Defective-esque layer of distrust.
+The potions function as grenades, meaning you must throw them to use them.
 
-Adopt a system akin to Imposter's ability to cycle through sabotage stations, but for potion selection. 
-After getting a cycle-able potion menu working, turn random potion selection into a toggle. This way, servers can choose which method they'd prefer.
+The potios are: Healing Potion, Armor Potion, Speed Potion, and Jump Potion. The speed and jump ones grant temporary boosts, the healing one heals, and the armor potion grants 15 points of body armor
