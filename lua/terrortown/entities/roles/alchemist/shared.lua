@@ -9,6 +9,7 @@ if SERVER then
 	AddCSLuaFile()
 
 	util.AddNetworkString("FakeTimer")
+	util.AddNetworkString("Stop")
 end
 
 function ROLE:PreInitialize()
@@ -39,7 +40,9 @@ if SERVER then
 
 	--This sets up the timer needed to supply a potion after a certain time
 	local function GiveMeAPotion(ply)
-		timer.Create( "MakePotion", 35, 5,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
+		local timetomake = GetConVar("ttt2_alch_time_until_potion"):GetInt()
+		local howmanytimes = GetConVar("ttt2_alch_potion_timer_repeat"):GetInt()
+		timer.Create( "MakePotion", timetomake, howmanytimes,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
 	end
 	hook.Add( "Initialize", "Timer Example", "MakePotion" )
 
@@ -48,16 +51,37 @@ if SERVER then
 			GiveMeAPotion(ply)
 			net.Start("FakeTimer")
 			net.Send(ply)
+
+	end
+
+	function ROLE:RemoveRoleLoadout(ply, isRoleChange)
+		timer.Remove("MakePotion")
+	end
+
+	if not IsValid() or not ply:IsPlayer() or not ply:Alive() or ply:IsSpec() then
+		timer.Remove("MakePotion")
+	end
+
+	if not timer.Exists("MakePotion") then
+		net.Start("Stop")
+		net.Send(ply)
 	end
 end
 
 
 if CLIENT then
+	
+	local timetomake = GetConVar("ttt2_alch_time_until_potion"):GetInt()
+	local howmanytimes = GetConVar("ttt2_alch_potion_timer_repeat"):GetInt()
 
 	net.Receive("FakeTimer", function()
-			timer.Create( "Name", 35, 5, function() end )
+			timer.Create( "Name", timetomake, howmanytimes, function() end )
 	end)
 	hook.Add( "Initialize", "Timer Example", CreateFakeTimer )
+
+	net.Receive("Stop", function()
+		timer.Remove("Name")
+	end)
 end
 
 --This is a table for the random potion selection to use.
