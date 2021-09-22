@@ -8,6 +8,7 @@ if SERVER then
 	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_alch.vmt")
 	AddCSLuaFile()
 
+	util.AddNetworkString("FakeTimer")
 end
 
 function ROLE:PreInitialize()
@@ -34,6 +35,8 @@ function ROLE:Initialize()
 end
 
 if SERVER then
+
+
 	--This sets up the timer needed to supply a potion after a certain time
 	local function GiveMeAPotion(ply)
 		timer.Create( "MakePotion", 25, 5,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
@@ -43,9 +46,19 @@ if SERVER then
 	--All this really does is set the timer's function to the player.
 	function ROLE:GiveRoleLoadout(ply, isRoleChange)
 			GiveMeAPotion(ply)
+			net.Start("FakeTimer")
+			net.Send(ply)
 	end
 end
 
+
+if CLIENT then
+
+	net.Receive("FakeTimer", function()
+			timer.Create( "Name", 25, 5, function() print("I'm Learnding!") end )
+	end)
+	hook.Add( "Initialize", "Timer Example", CreateFakeTimer )
+end
 
 --This is a table for the random potion selection to use.
 potions = { "weapon_ttt_healpotion", "weapon_ttt_speedpotion", "weapon_ttt_armorpotion", "weapon_ttt_jumppotion"}
