@@ -27,7 +27,7 @@ local function JumpRadius(pos, thrower, ply)
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
 			target:SetJumpPower(GetConVar("ttt2_alch_jump_potion_jump"):GetInt())
-			timer.Create("Jumpies", duration, 1, function() target:SetJumpPower(200) print("test") end)
+			timer.Create("Jumpies", duration, 1, function() target:SetJumpPower(200) if not target:Alive() then return end end)
 		end
 	end
 end
