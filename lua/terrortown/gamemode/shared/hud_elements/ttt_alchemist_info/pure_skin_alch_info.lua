@@ -81,12 +81,12 @@ if CLIENT then -- CLIENT
 			draw.FilteredShadowedTexture(x + 8 * self.scale, y + 5 * self.scale, 30 * self.scale, 30 * self.scale, self.alch_icon, color.a, color, self.scale)
 		end
 
-		local amnt_print = time
+
 		if timer.Exists("Name") then
 			time = math.Round(timer.TimeLeft("Name"))
-		else
-			time = "0"
+			recursions = timer.RepsLeft("Name")
 		end
+		local amnt_print =  time .. "  #" .. recursions
 		if timer.Exists("Name") then
 			draw.AdvancedText(amnt_print, "PureSkinBar", x + 46 * self.scale, y + 9 * self.scale, color, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, true, self.scale)
 		end
