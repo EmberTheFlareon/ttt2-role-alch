@@ -21,7 +21,7 @@ function ENT:Initialize()
 end
 
 local function SpeedRadius(pos, thrower, ply)
-	local radius	= 250
+	local radius	= GetConVar("ttt2_alch_speed_potion_splash"):GetInt()
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then

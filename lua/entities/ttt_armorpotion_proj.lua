@@ -4,7 +4,7 @@ end
 
 ENT.Type = "anim"
 ENT.Base = "ttt_basegrenade_proj"
-ENT.Model = Model("models/sohald_spike/props/potion_5.mdl")
+ENT.Model = Model("models/sohald_spike/props/potion_2.mdl")
 
 function ENT:Initialize()
 
@@ -21,7 +21,7 @@ function ENT:Initialize()
 end
 
 local function ArmorRadius(pos, thrower, ply)
-	local radius	= 250
+	local radius	= GetConVar("ttt2_alch_armor_potion_splash"):GetInt()
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
