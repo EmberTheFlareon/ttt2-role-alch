@@ -28,6 +28,7 @@ local function ArmorRadius(pos, thrower, ply)
 			target:GiveArmor(GetConVar("ttt2_alch_armor_potion_amnt"):GetInt())
 		end
 	end
+
 end
 
 local splashsound = Sound("physics/glass/glass_bottle_break2.wav")

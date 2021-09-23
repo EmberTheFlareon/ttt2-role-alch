@@ -22,12 +22,14 @@ end
 
 local function SpeedRadius(pos, thrower, ply)
 	local radius	= 250
-	local duration	= GetConVar("ttt2_alch_speed_potion_time"):GetInt()
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) then
 			target:SetWalkSpeed(GetConVar("ttt2_alch_speed_potion_speed"):GetInt())
-			timer.Create("Zoomies", duration, 1, function() target:SetWalkSpeed(200) if not target:Alive() then return end end)
+			timer.Create("Zoomies", GetConVar("ttt2_alch_speed_potion_time"):GetInt(), 1, function() target:SetWalkSpeed(250) end)
+			if not IsValid(target) or not target:IsPlayer() or not target:Alive() or target:IsSpec() then
+				target:SetWalkSpeed(250)
+			end
 		end
 	end
 

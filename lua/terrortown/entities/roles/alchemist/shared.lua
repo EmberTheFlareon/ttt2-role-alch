@@ -71,13 +71,12 @@ end
 
 if CLIENT then
 	
-	local timetomake = GetConVar("ttt2_alch_time_until_potion"):GetInt()
-	local howmanytimes = GetConVar("ttt2_alch_potion_timer_repeat"):GetInt()
+	local time = GetConVar("ttt2_alch_time_until_potion"):GetInt()
+	local howmany = GetConVar("ttt2_alch_potion_timer_repeat"):GetInt()
 
 	net.Receive("FakeTimer", function()
-			timer.Create( "Name", timetomake, howmanytimes, function() end )
+			timer.Create( "Name", time, howmany, function() end )
 	end)
-	hook.Add( "Initialize", "Timer Example", CreateFakeTimer )
 
 	net.Receive("Stop", function()
 		timer.Remove("Name")
