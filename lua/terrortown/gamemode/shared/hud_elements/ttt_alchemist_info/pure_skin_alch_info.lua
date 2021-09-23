@@ -77,7 +77,7 @@ if CLIENT then -- CLIENT
 			draw.FilteredShadowedTexture(x + 8 * self.scale, y + 5 * self.scale, 30 * self.scale, 30 * self.scale, self.alch_icon, color.a, color, self.scale)
 		else
 			color = table.Copy(util.GetDefaultColor(self.basecolor))
-			color.a = 90
+			color.a = 75
 			draw.FilteredShadowedTexture(x + 8 * self.scale, y + 5 * self.scale, 30 * self.scale, 30 * self.scale, self.alch_icon, color.a, color, self.scale)
 		end
 
