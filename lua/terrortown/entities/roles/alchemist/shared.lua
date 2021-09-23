@@ -46,7 +46,9 @@ if SERVER then
 	end
 	hook.Add( "Initialize", "Timer Example", "MakePotion" )
 
-	--All this really does is set the timer's function to the player.
+	--This calls for the timer above to start and attach to the player.
+	--It also starts a fake timer on the client's side at the same time. 
+	--The fake timer only serves as an easy way for the HUD to correctly display the right time
 	function ROLE:GiveRoleLoadout(ply, isRoleChange)
 			GiveMeAPotion(ply)
 			net.Start("FakeTimer")
@@ -54,14 +56,17 @@ if SERVER then
 
 	end
 
+	--Ensures the timer ends correctly if the role changes, like when the round ends.
 	function ROLE:RemoveRoleLoadout(ply, isRoleChange)
 		timer.Remove("MakePotion")
 	end
 
+	--This makes sure the timer stops if the player dies.
 	if not IsValid() or not ply:IsPlayer() or not ply:Alive() or ply:IsSpec() then
 		timer.Remove("MakePotion")
 	end
 
+	--Makes the fake timer that the hud uses also stop if the actual timer stops as well.
 	if not timer.Exists("MakePotion") then
 		net.Start("Stop")
 		net.Send(ply)
@@ -70,14 +75,17 @@ end
 
 
 if CLIENT then
-	
+	--Simply sets those two words up as numbers to use in the timer below.
 	local time = GetConVar("ttt2_alch_time_until_potion"):GetInt()
 	local howmany = GetConVar("ttt2_alch_potion_timer_repeat"):GetInt()
 
+	--Recieves a call from the server-side code to start a fake timer.
+	--I call it a fake timer as it's only purpose is to make the HUD element display correctly.
 	net.Receive("FakeTimer", function()
 			timer.Create( "Name", time, howmany, function() end )
 	end)
 
+	--Recieves the call to stop the fake timer if the real timer has stopped.
 	net.Receive("Stop", function()
 		timer.Remove("Name")
 	end)
