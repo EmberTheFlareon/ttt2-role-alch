@@ -19,8 +19,8 @@ end
 
 SWEP.Base                  = "weapon_tttbasegrenade"
 
-SWEP.ViewModel             = Model("models/sohald_spike/props/potion_2.mdl")
-SWEP.WorldModel            = Model("models/sohald_spike/props/potion_2.mdl")
+SWEP.ViewModel             = Model("models/sohald_spike/props/potion_5.mdl")
+SWEP.WorldModel            = Model("models/sohald_spike/props/potion_5.mdl")
 SWEP.Weight                = 5
 SWEP.AutoSpawnable         = false
 SWEP.ShowWorldModel        = false
