@@ -21,7 +21,7 @@ function ENT:Initialize()
 end
 
 local function HealRadius(pos, thrower, ply)
-	local radius	= GetConVar("ttt2_alch_heal_potion_splash"):GetInt()
+	local radius	= GetConVar("ttt2_alch_health_potion_splash"):GetInt()
 
 	for k, target in pairs(ents.FindInSphere(pos, radius)) do
 		if IsValid(target) and target:IsPlayer() and (not target:IsFrozen()) and (not target:IsSpec()) and target:Health() < target:GetMaxHealth() then
