@@ -4,7 +4,7 @@ They are an Innocent role that 'brews' potions over time that give benefits when
 
 
 CURRENT PROGRESS:
-There is now a HUD element! It displays the timer left on making a potion.
+There is now a HUD element! It displays the time left on making a potion as well as how many potions are left to make
 
 This role currently has 4 different potions. Every 25 seconds, a random one is chosen and given to the player. This occurs 5 times during the round.
 
