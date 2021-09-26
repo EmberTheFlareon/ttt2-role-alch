@@ -93,3 +93,20 @@ end
 
 --This is a table for the random potion selection to use.
 potions = { "weapon_ttt_healpotion", "weapon_ttt_speedpotion", "weapon_ttt_armorpotion", "weapon_ttt_jumppotion"}
+
+
+--Thia whole block here is an attempt to get the Mimic/Doppelganger roles to register the Alchemist correctly.
+if SERVER then
+
+	local function DoppelAlchemist(mimic_data)
+		if not DOPPELGANGER then return end
+		local ply = mimic_data.ply
+		if not IsValid(ply) or ply:IsSpec() or not ply:Alive() then return end
+		if ply:GetSubRole() ~= ROLE_DOPPELGANGER and ply:GetSubRole() ~= ROLE_MIMIC then return end
+		if mimic_data.role ~= ROLE_ALCHEMIST then return end
+		mimic_data.did_steal = true
+		return mimic_data
+	  end
+
+  	hook.Add("TTT2DoppelgangerRoleChange", "TTT2DoppelMarker", DoppelAlchemist)
+end
