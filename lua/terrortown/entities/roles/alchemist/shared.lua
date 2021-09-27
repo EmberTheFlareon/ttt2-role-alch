@@ -42,7 +42,7 @@ if SERVER then
 	local function GiveMeAPotion(ply)
 		local timetomake = GetConVar("ttt2_alch_time_until_potion"):GetInt()
 		local howmanytimes = GetConVar("ttt2_alch_potion_timer_repeat"):GetInt()
-		timer.Create( "MakePotion", timetomake, howmanytimes,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
+		timer.Create( "MakePotion" .. ply:SteamID64(), timetomake, howmanytimes,  function() ply:GiveEquipmentWeapon( potions[math.random(1, #potions)] ) end)
 	end
 	hook.Add( "Initialize", "Timer Example", "MakePotion" )
 
