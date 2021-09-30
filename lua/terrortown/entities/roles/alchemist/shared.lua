@@ -58,19 +58,19 @@ if SERVER then
 
 	--Ensures the timer ends correctly if the role changes, like when the round ends.
 	function ROLE:RemoveRoleLoadout(ply, isRoleChange)
-		timer.Remove("MakePotion")
-	end
-
-	--This makes sure the timer stops if the player dies.
-	if not IsValid() or not ply:IsPlayer() or not ply:Alive() or ply:IsSpec() then
-		timer.Remove("MakePotion")
-	end
-
+		if not IsValid() or not ply:IsPlayer() or not ply:Alive() or ply:IsSpec() or ply:IsTerror() then
+			timer.Remove("MakePotion" .. ply:SteamID64())
+		end
+		timer.Remove("MakePotion" .. ply:SteamID64())
+		
 	--Makes the fake timer that the hud uses also stop if the actual timer stops as well.
-	if not timer.Exists("MakePotion") then
-		net.Start("Stop")
-		net.Send(ply)
+		if not timer.Exists("MakePotion"  .. ply:SteamID64()) then
+			net.Start("Stop")
+			net.Send(ply)
+		end
 	end
+
+
 end
 
 
