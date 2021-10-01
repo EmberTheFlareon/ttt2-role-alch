@@ -84,8 +84,7 @@ if CLIENT then -- CLIENT
 
 		if timer.Exists("Name") then
 			local time = math.Round(timer.TimeLeft("Name"))
-			local recursions = timer.RepsLeft("Name")
-			local amnt_print =  time .. "  #" .. recursions
+			local amnt_print =  time .. "  #" .. timer.RepsLeft("Name")
 			draw.AdvancedText(amnt_print, "PureSkinBar", x + 46 * self.scale, y + 9 * self.scale, color, TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, true, self.scale)
 		end
 
