@@ -58,7 +58,7 @@ if SERVER then
 
 	--Ensures the timer ends correctly if the role changes, like when the round ends.
 	function ROLE:RemoveRoleLoadout(ply, isRoleChange)
-		if not IsValid() or not ply:IsPlayer() or not ply:Alive() or ply:IsSpec() or ply:IsTerror() then
+		if not IsValid() or not ply:IsPlayer() or not ply:Alive() or ply:IsSpec() then
 			timer.Remove("MakePotion" .. ply:SteamID64())
 		end
 		timer.Remove("MakePotion" .. ply:SteamID64())
